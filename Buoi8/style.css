@@ -1,0 +1,37 @@
+*{
+    margin: 0 auto;
+}
+.container{
+    background-image: url("Pattaya.jpg");
+    background-size: cover;
+    margin: 0 20px;
+    padding: 10px 100px;
+}
+.container > h1{
+    color: #FFC620;
+    font-size: 14px;
+    text-transform:uppercase;
+}
+.div1{
+    background-color: #33999B;
+    color: #FFFFFF;
+    text-align: justify;
+    margin: 10px;
+    padding: 10px;
+}
+.div2{
+    background-color: #000081;
+    color: #FFFFFF;
+    text-align: justify;
+    margin: 10px;
+    padding: 10px;
+
+}
+.div3{
+    background-color: #30504F;
+    color: #FFFFFF;
+    text-align: justify;
+    margin: 10px;
+    padding: 10px;
+
+}

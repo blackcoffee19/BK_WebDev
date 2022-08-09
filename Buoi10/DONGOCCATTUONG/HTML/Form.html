@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form</title>
+        <meta charset="UTF-8">
+        <style>
+            form{
+                border: 1px solid orange;
+                width: fit-content;
+            }
+            #header{
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+            table th,tr,td{
+                margin-bottom: 10px;
+            }
+            table tr h3{
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+            #submit{
+                text-align: center;
+            }
+            #submit>input{
+                font-size: 14px;
+                height: 30px;
+                width: 70px;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <form>
+                <table>
+                    <th>
+                        <td colspan="2"><h3 id="header">Đăng ký thành viên</h3></td>
+                    </th>
+                    <tr>
+                        <td colspan="2"><h3>Thông tin tài khoản</h3></td>
+                    </tr>
+                    <tr>
+                        <td><label for="username">Username:</label></td>
+                        <td><input type="text" id="username"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="re-password">Nhập lại password:</label></td>
+                        <td><input type="password" id="re-password"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><h3>Thông tin cá nhân</h3></td>
+                    </tr>
+                    <tr>
+                        <td><label for="fullName">Họ và tên:</label></td>
+                        <td><input type="text" id="fullName"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">Giới tính:</label></td>
+                        <td><select name="gender" id="gender">
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Địa chỉ:</label></td>
+                        <td><textarea id="address"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="birthday">Ngày sinh:</label></td>
+                        <td><input type="text" id="birthday"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="hn">Tình trạng hôn nhân</label></td>
+                        <td><input type="radio" id="hn" value="single"><label for="hn">độc thân</label>
+                            <input type="radio" id="hn" value="married"><label for="hn">đã đính hôn</label>
+                            <input type="radio" id="hn" value="break"><label for="hn">ly dị</label>
+                            <input type="radio" id="hn" value="dead"><label for="hn">quá phụ</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="submit"><input type="submit" value="Gửi đi" onclick="alert('Đăng ký thành công!!!')"><input type="button" value="Nhập lại" onclick="document.getElementById('text').innerHTML='Thông tin sai, nhập lại nhé!!!'"></td>
+                    </tr>
+                    <tr>
+                        <td id="text">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </body>
+</html>
