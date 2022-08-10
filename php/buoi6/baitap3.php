@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Tính ngày sinh nhật</title>
+        <title>Tính nam nhuan</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
         <style>
             html{
                 font-size: 15px;
@@ -14,13 +14,14 @@
                 margin: 20px auto;
                 border-collapse: collapse;
     		    background-color: #ABE3FF;
+                width: 80%;
             }
             caption{
                 font-size: 2.4rem;
                 color:#000000;
                 font-weight: 600;
                 background-color: #005CB6;
-                font-family: 'Italianno', cursive;
+                font-family: 'Montserrat', sans-serif;
             }
             .hightlight {
                 background-color: #c3c3c3;
@@ -34,7 +35,7 @@
                 width: 200px;
             }
 		input[type="text"]{
-		    width: 70px;
+		    width: 100%;
             height: 30px;
             font-size: 1.1rem;
 	    }
@@ -42,37 +43,48 @@
     </head>
     <body>
     <?php
-        $numbers = "";$tb="";$kq=0;$numbers2="";
+    $flower = "";$tb="";$kq="";$tb2="";$giohoa= array();
         if(isset($_POST["submit"])){
-            $numbers = $_POST["numbers"];
-            if(!empty($numbers)){
-                $numbers2 = explode(",",$numbers);
-                foreach($numbers2 as $num){
-                   $kq+=$num;
+            $flower = $_POST["flower"];
+            if(!empty($flower)){
+                foreach($giohoa as $hoa){
+                    if(strcasecmp($hoa,$flower))
+                    {
+                        $tb2 ="da co hoa trong gio";
+                        $kq = implode(" --",$giohoa);
+                        break;
+                    }
+                };
+                if($kq ==""){
+                    array_push($giohoa,$flower);
+                    $kq = implode(" --",$giohoa);
                 }
             }else{
-                $tb = "Bạn chưa nhập day so";
+                $tb = "Bạn chưa nhập hoa";
             }
+        }else{
+                    
         }
     ?>
-    <?= $tday2?> 
     <form method="post" action="">
         <table cellspacing="10" cellpadding="10">
-            <caption><b>NHAP VA TINH TREN DAY SO</b></caption>
+            <caption><b>MUA HOA</b></caption>
             <tr>
-                <td>Nhap day so: </td>
-                <td><input type="text" name="numbers" value="<?php echo $numbers ?>"> <font color="red">(*)</font></td>
-
+                <td>Nhap ten hoa: </td>
+                <td><input type="text" name="flower" value="<?php echo $flower ?>"></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><input type="submit" name="submit" value="Tong day so"></td>
+                <td colspan="2" align="center"><input type="submit" name="submit" value="Them vao gio"></td>
             </tr>
             <tr>
-                <td>Tong day so</td>
-                <td><input type="text" name="dayso" value="<?=$kq?>" readonly></td>
+                <td>Gio hoa: </td>
+                <?php if($tb2 != ""){
+                    echo "<td>$tb2</td>";
+                }
+                ?>
             </tr>
             <tr>
-                <td colspan="2" align="center"><font color="red">(*)</font> Cac so duoc nhap cach nha bang dau ","</td>
+                <td colspan="2"><input type="textarea" style="width:100%" cols="8" rows="3" name="ketqua" value="<?=$kq?>" readonly></td>
             </tr>
         </table>
         <?php
