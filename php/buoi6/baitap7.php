@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Gio hoa</title>
+        <title>Thay the</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -43,48 +43,64 @@
     </head>
     <body>
     <?php
-    $flower = "";$tb="";$kq="";$tb2="";$giohoa= array();
-        if(isset($_POST["submit"])){
-            $flower = $_POST["flower"];
-            if(!empty($flower)){
-                foreach($giohoa as $hoa){
-                    if(strcasecmp($hoa,$flower))
-                    {
-                        $tb2 ="da co hoa trong gio";
-                        $kq = implode(" --",$giohoa);
-                        break;
-                    }
-                };
-                if($kq ==""){
-                    array_push($giohoa,$flower);
-                    $kq = implode(" --",$giohoa);
+    function tangdan($arr){
+        $temp = 0;
+        for($i=0;$i<count($arr)-1;$i++){
+            for($j = $i+1;$j<count($arr);$j++){
+                if($arr[$j]<$arr[$i]){
+                    $temp = $arr[$i];
+                    $arr[$i] = $arr[$j];
+                    $arr[$j] = $temp;
                 }
+            }
+        };
+        return implode(", ",$arr);
+    };
+    function giamdan($arr){
+        $temp = 0;
+        for($i=0;$i<count($arr)-1;$i++){
+            for($j = $i+1;$j<count($arr);$j++){
+                if($arr[$j]>$arr[$i]){
+                    $temp = $arr[$i];
+                    $arr[$i] = $arr[$j];
+                    $arr[$j] = $temp;
+                }
+            }
+        };
+        return implode(", ",$arr);
+    };
+        $numbers = "";$mang1="";$mang2="";$arr=[];$tb="";
+        if(isset($_POST["submit"])){
+            $numbers = $_POST["numbers"];
+            if(!empty($numbers)){
+                $arr = explode(",",$numbers);
+                $mang1 = tangdan($arr);
+                $mang2 = giamdan($arr);
             }else{
                 $tb = "Bạn chưa nhập hoa";
             }
-        }else{
-                    
         }
     ?>
     <form method="post" action="">
         <table cellspacing="10" cellpadding="10">
-            <caption><b>MUA HOA</b></caption>
+            <caption><b>SAP XEP MANG</b></caption>
             <tr>
-                <td>Nhap ten hoa: </td>
-                <td><input type="text" name="flower" value="<?php echo $flower ?>"></td>
+                <td>Nhap mang: </td>
+                <td><input type="text" name="numbers" value="<?php echo $numbers ?>"></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><input type="submit" name="submit" value="Them vao gio"></td>
+                <td colspan="2" align="center"><input type="submit" name="submit" value="THAY THE"></td>
             </tr>
             <tr>
-                <td>Gio hoa: </td>
-                <?php if($tb2 != ""){
-                    echo "<td>$tb2</td>";
-                }
-                ?>
+                <td>Tang dan: </td>
+                <td><input type="text" name="mang1" value="<?=$mang1?>" readonly></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="textarea" style="width:100%" cols="8" rows="3" name="ketqua" value="<?=$kq?>" readonly></td>
+                <td>Giam dan: </td>
+                <td><input type="text" name="mang2" value="<?=$mang2?>" readonly></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">(Cac phan tu trong mang se cach nhau bang dau ",")</td>
             </tr>
         </table>
         <?php
