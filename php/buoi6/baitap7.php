@@ -86,18 +86,18 @@
             <caption><b>SAP XEP MANG</b></caption>
             <tr>
                 <td>Nhap mang: </td>
-                <td><input type="text" name="numbers" value="<?php echo $numbers ?>"></td>
+                <td><input type="text" name="numbers" value="<?php echo $numbers; ?>"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" name="submit" value="THAY THE"></td>
             </tr>
             <tr>
                 <td>Tang dan: </td>
-                <td><input type="text" name="mang1" value="<?=$mang1?>" readonly></td>
+                <td><input type="text" name="mang1" value="<?=$mang1;?>" readonly></td>
             </tr>
             <tr>
                 <td>Giam dan: </td>
-                <td><input type="text" name="mang2" value="<?=$mang2?>" readonly></td>
+                <td><input type="text" name="mang2" value="<?=$mang2;?>" readonly></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">(Cac phan tu trong mang se cach nhau bang dau ",")</td>
@@ -105,7 +105,7 @@
         </table>
         <?php
         if($tb != ""){
-            echo"<p align='center'>*{$tb}</p>";
+            echo "<p align='center'>*{$tb}</p>";
         }
         ?>
     </form>
