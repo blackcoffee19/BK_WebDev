@@ -15,8 +15,12 @@
             userpassword VARCHAR(20) NOT NULL,
             re_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )";
+        $sql = "INSERT INTO MyGuests (firstname, lastname, email,username,userpassword)
+        VALUES ('black', 'coffee', 'cattuongw2000@gmail.com','admin','admin')";
         $conn->exec($sql);
+            echo "Database created successfully";
     } catch(PDOException $e){
         echo $sql."<br>".$e->getMessage();
     };
+    $conn = null;
 ?>
