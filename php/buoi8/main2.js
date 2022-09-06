@@ -18,7 +18,7 @@ $(document).ready(()=>{
     $('#bag').on('click',()=>{
         $('#bag-list').toggle();
     });
-    $('.alert').prev().find('a').on('mouseenter',()=>{
+    $('.alert_cus').prev().find('a').on('mouseenter',()=>{
         $('.alert').show();
         $('.alert').children().css({
             color: 'red',
@@ -39,9 +39,15 @@ $(document).ready(()=>{
     }).on('blur focus',()=>{
         $('span').toggle();
     });
-    $('#payment').on('click',()=>{
-        $('#payment').attr("href","?page=Payment&jsonstr="+JSON.stringify(arr_cars));
+    $('#payment1').on('click',()=>{
+        $('#payment1').attr("href","?page=Payment&login=true&jsonstr="+JSON.stringify(arr_cars));
     });
+    $('#payment2').on('click',()=>{
+        $('#payment2').attr("href","?page=Payment&login=false&jsonstr="+JSON.stringify(arr_cars));
+    });
+    $('#cus_order').on('click',()=>{
+        $('#input_infor').toggle();
+    })
 });
 function searching(str){
     let xmlhtml = new XMLHttpRequest();
@@ -58,6 +64,7 @@ let sum = 0;
 let i = 1;
 let boo = true;
 let arr_cars=[];
+let login= false;
 const addToCart = (obj) =>{
     arr_cars.push(obj);
     console.log(arr_cars);
@@ -104,6 +111,17 @@ const remove_btn = (indexObj) => {
     listCar(arr_cars);
     document.getElementById('total').innerHTML = sum.toLocaleString('en-US');
 };
+const submitForm = (loginStatus)=>{
+    alert(loginStatus);
+};
+const logined =()=>{
+    login = true;
+};
+console.log(login);
+// if(login){
+//     document.getElementById("logout").style.display='block';
+//     document.getElementsByClassName("login").style.display='none';
+// }
     // sum += arr[key][1];
     //         ctd.innerHTML= i;
     //         node = ctd.cloneNode(true);

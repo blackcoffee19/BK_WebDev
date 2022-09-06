@@ -55,6 +55,7 @@
             flex-direction: row;
             justify-content: center;
             align-items: flex-start;
+            margin-top: 100px;
         }
         .cars {
             display: block;
@@ -291,7 +292,7 @@
             height: 200px;
             overflow: scroll;
         }
-        #payment{
+        #payment1, #payment2{
             width: 90%;
             display: flow-root;
             text-align: center;
@@ -420,6 +421,11 @@
             height: 50%;
             font-size: 1.2rem;
         }
+        .cus_form input{
+            outline: none;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
         @media screen and (max-width: 1100px) {
             .list2{
                 margin-top: 10%;
@@ -446,6 +452,7 @@
                     <td style="padding-left:15%;" class="navmenu-list"><a href="?page=Sport&type=Chevrolet" class="nav-item">Chevrolet</a></td>
                     <td style="padding-left:15%;" class="navmenu-list"><a href="?page=Muscle&type=Chevrolet" class="nav-item">Chevrolet</a></td>
                     <td style="padding-left:15%;" class="navmenu-list"><a href="?page=Login&type=Login" class="nav-item">Login</a></td>
+                    <!-- <td id="logout" style="display: none;padding-left:15%;" class="navmenu-list"><a href=""  class="nav-item"></a></td>  -->
                 </tr>
                 <tr>
                     <td style="padding-left:15%;" class="navmenu-list"><a href="?page=Sport&type=BMW" class="nav-item">BMW</a></td>
@@ -489,10 +496,11 @@
     }
     ?>
 
-    <main>
+    <main class="mb-3">
         <?php
         if(isset($_GET["page"])){
             $pa = $_GET["page"];
+            $login = $_GET["login"];
             switch($pa){
                 case "Sport": case "Muscle":
                     require("Sport2.php");
@@ -526,7 +534,11 @@
         echo '      <table id="list" cellpadding="7">';
         echo '      </table></div>';
         echo '  <p style="font-weight:700; float:right;margin-right:50px;">TOTAL:&emsp;&emsp;&emsp; <font color="red">$</font><span style="color:red" id="total"></span></p>';
-        echo '  <a id="payment">Payment</a></div>';
+        if($_GET["login"]==true){
+            echo '  <a id="payment1">Payment</a></div>';
+        }else{
+            echo '  <a id="payment2">Payment</a></div>';
+        }
         echo "</div>";
     }
     ?>
